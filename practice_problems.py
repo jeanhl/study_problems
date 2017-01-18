@@ -113,3 +113,36 @@
 # rotate_matrix([[1,2,3],[4,5,6]])
 # rotate_matrix([[]])
 # rotate_matrix([])
+
+########################################################################
+
+# def merge_sorted_lists(lst1, lst2):
+#     # takes 2 sortes lists
+#     # returns 1 sorted list
+#     new_lst = []
+#     i1 = 0
+#     i2 = 0
+    
+#     while i1 < len(lst1) and i2 < len(lst2):
+#         if lst1[i1] < lst2[i2]:
+#             new_lst.append(lst1[i1])
+#             i1 += 1
+#         elif lst1[i1] == lst2[i2]:
+#             new_lst.append(lst1[i1])
+#             new_lst.append(lst2[i2])
+#             i1 += 1
+#             i2 += 1
+#         else:
+#             new_lst.append(lst2[i2])
+#             i2 += 1
+
+#     if i1 == len(lst1) and i2 < len(lst2):
+#         for i in range(i2,len(lst2)):
+#             new_lst.append(lst2[i]) 
+#     elif i2 == len(lst2) and i1 < len(lst1):
+#         for i in range(i1,len(lst1)):
+#             new_lst.append(lst1[i])
+    
+#     return new_lst
+
+# print merge_sorted_lists([1,3,5,9], [2,5,7,20])

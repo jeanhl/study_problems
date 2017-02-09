@@ -146,3 +146,28 @@
 #     return new_lst
 
 # print merge_sorted_lists([1,3,5,9], [2,5,7,20])
+
+
+########################################################################
+
+def longest_distance(astr):
+    # takes in a string and returns the longest distance between a repeating char
+    char_dist = {}  # {char: [index at pos1, index at pos2]}
+
+    for i in range(len(astr)):
+        char = astr[i]
+        char_dist[char] = char_dist.get(char, [i, i])
+        char_dist[char][1] = i
+
+    longest_distance = 0
+    character = None
+
+    for char in char_dist:
+        diff = char_dist[char][1] - char_dist[char][0]
+        if diff > longest_distance:
+            longest_distance = diff
+            character = char
+
+    return character, longest_distance
+
+print longest_distance("sabybada") #a, 6

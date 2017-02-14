@@ -206,103 +206,152 @@
 #  - Take off the last one. Then swap the first with it's smaller child like above
 
 
-class MinHeap():
-    def __init__(self, alist=None):
-        self.alist = alist
+# class MinHeap():
+#     def __init__(self, alist=None):
+#         self.alist = alist
 
-    def swap(self, i1, i2):
-        # given 2 indexes, it swaps the elements in the two indexes
-        self.alist[i1], self.alist[i2] = self.alist[i2], self.alist[i1]
+#     def swap(self, i1, i2):
+#         # given 2 indexes, it swaps the elements in the two indexes
+#         self.alist[i1], self.alist[i2] = self.alist[i2], self.alist[i1]
 
-    def peak(self):
-        # return the topmost node
-        return self.alist[0]
+#     def peak(self):
+#         # return the topmost node
+#         return self.alist[0]
 
-    def size(self):
-        # returns the length of the storage array
-        return len(self.alist)
+#     def size(self):
+#         # returns the length of the storage array
+#         return len(self.alist)
 
-    def insert(self, value):
-        self.alist.append(value)
-        self.bubble_up(self.size - 1)
+#     def insert(self, value):
+#         self.alist.append(value)
+#         self.bubble_up(self.size() - 1)
 
-    def bubble_up(self, ci):
-        # given a child index ci, find parent, swap if needed
-        # pi = parent index
-        if ci % 2 == 0:
-            pi = (ci - 2)/2
-        else:
-            pi = (ci - 1)/2
+#     def bubble_up(self, ci):
+#         # given a child index ci, find parent, swap if needed
+#         # pi = parent index
+#         if ci % 2 == 0:
+#             pi = (ci - 2)/2
+#         else:
+#             pi = (ci - 1)/2
 
-        while ci > 0 and self.alist[ci] < self.alist[ci]:
-            self.swap(ci, pi)
-            ci = pi
-            if ci % 2 == 0:
-                pi = (ci - 2)/2
-            else:
-                pi = (ci - 1)/2
+#         while ci > 0 and self.alist[ci] < self.alist[pi]:
+#             self.swap(ci, pi)
+#             ci = pi
+#             if ci % 2 == 0:
+#                 pi = (ci - 2)/2
+#             else:
+#                 pi = (ci - 1)/2
 
-    def remove_peak(self):
-        self.swap(0, self.size() - 1)
-        minElement = self.alist.pop()
-        self.bubble_down(0)
-        return minElement
+#     def remove_peak(self):
+#         self.swap(0, self.size() - 1)
+#         minElement = self.alist.pop()
+#         self.bubble_down(0)
+#         return minElement
 
-    def bubble_down(self, pi):
-        ci1 = (2 * pi) + 1
-        ci2 = (2 * pi) + 2
+#     def bubble_down(self, pi):
+#         ci1 = (2 * pi) + 1
+#         ci2 = (2 * pi) + 2
 
-        # make sure the children is there.
-        # Indexes have to be within the len
-        if ci1 >= self.size():
-            return None
-        elif ci2 >= self.size():
-            mci = ci1  # master child index
-        elif self.alist[ci1] < self.alist[ci2]:  # find the smaller child
-            mci = ci1
-        else:
-            mci = ci2
-        print self.alist[pi]
-        print self.alist[mci]
-        while pi < (self.size()-1) and self.alist[pi] > self.alist[mci]:
-            print pi, mci
-            self.swap(pi, mci)
-            pi = mci
+#         # make sure the children is there.
+#         # Indexes have to be within the len
+#         if ci1 >= self.size():
+#             return None
+#         elif ci2 >= self.size():
+#             mci = ci1  # master child index
+#         elif self.alist[ci1] < self.alist[ci2]:  # find the smaller child
+#             mci = ci1
+#         else:
+#             mci = ci2
+#         while pi < (self.size()-1) and self.alist[pi] > self.alist[mci]:
+#             self.swap(pi, mci)
+#             pi = mci
+#             ci1 = (2 * pi) + 1
+#             ci2 = (2 * pi) + 2
+#             if ci1 >= self.size():
+#                 return None
+#             elif ci2 >= self.size():
+#                 mci = ci1
+#             elif self.alist[ci1] < self.alist[ci2]:
+#                 mci = ci1
+#             elif self.alist[ci2] < self.alist[ci1]:
+#                 mci = ci2
 
-            ci1 = (2 * pi) + 1
-            ci2 = (2 * pi) + 2
-
-            if ci1 >= self.size():
-                return None
-            elif ci2 >= self.size():
-                mci = ci1
-            elif self.alist[ci1] < self.alist[ci2]:
-                mci = ci1
-            else:
-                mci = ci2
-            print "parent", pi, "mci", mci, "self.alist", self.alist
-
-    def remove(self):
-        # remove things in the middle of the min heap
-        # takes in a value, finds the value in the array O(n)
-        # assign it to a min val
-        # bubble it down to remove it
-
-        
-
-minheap = MinHeap([4,7,5,9,10,6,8])
-print minheap.alist
-minheap.swap(1,4)
-print minheap.alist
-peak = minheap.peak()
-print peak
-print minheap.size()
-minheap.remove_peak()
-print minheap.alist
+#     def remove(self, val):  # FIXIT!!
+#         # remove things in the middle of the min heap
+#         # takes in a value, finds the value in the array O(n)
+#         # assign it to a min val
+#         # bubble it down to remove it
+#         if val in self.alist:
+#             minVali = self.alist.index(val)
+#             self.swap(minVali, self.size()-1)
+#             result = self.alist.pop()
+#             if minVali < self.size():
+#                 self.bubble_down(minVali)
+#             return result
+#         else:
+#             return None
 
 
+# minheap = MinHeap([4,7,5,9,10,6,8])
+# print minheap.alist
+# minheap.swap(1,4)
+# print minheap.alist
+# peak = minheap.peak()
+# print minheap.size()
+# minheap.remove_peak()
+# print minheap.alist
+# minheap.insert(3)
+# print "inserted", minheap.alist
+
+##########################################################################
+
+# given an unsorted array of unique integers, find the first missing positive integers
+# 0 doesn't count as positive
+# [-4, 5,1,3,4]  ->  2
+
+def find_pos(array):
+    i = 0
+    length = len(array)
+    while i < length:
+        if array[i] < 1:
+            array = array[:i] + array[i+1:]
+            length = len(array)
+        i += 1
+
+    lowest = min(array)
+    highest = max(array)
+    true_len = highest - lowest + 1
+    difference = true_len - len(array)
+
+    for each in range(difference):
+        array.append(None)
+
+    # touches each number ONCE to place them in the corresponding index location
+    i = 0
+    while i < true_len:
+        j = i
+        num = array[j]
+        num_i = array[j]-lowest
+        while not is_index(num_i, j) and num is not None:  # (Is this O(n)?)
+            temp = array[num_i]
+            array[num_i] = num
+            j = num_i
+            num = temp
+        i += 1
+
+    print array
+    for i in range(len(array)):
+        if (array[i] - lowest) != i:
+            return (i + lowest)
+
+    return None
 
 
+def is_index(num1, num2):
+    if num1 == num2:
+        return True
+    else:
+        return False
 
-
-
+print "finding missing positive"
+print find_pos([-4, 5,1,3,4])

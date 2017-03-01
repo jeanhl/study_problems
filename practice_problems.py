@@ -309,49 +309,92 @@
 # 0 doesn't count as positive
 # [-4, 5,1,3,4]  ->  2
 
-def find_pos(array):
+# def find_pos(array):
+#     i = 0
+#     length = len(array)
+#     while i < length:
+#         if array[i] < 1:
+#             array = array[:i] + array[i+1:]
+#             length = len(array)
+#         i += 1
+
+#     lowest = min(array)
+#     highest = max(array)
+#     true_len = highest - lowest + 1
+#     difference = true_len - len(array)
+
+#     for each in range(difference):
+#         array.append(None)
+
+#     # touches each number ONCE to place them in the corresponding index location
+#     i = 0
+#     while i < true_len:
+#         j = i
+#         num = array[j]
+#         num_i = array[j]-lowest
+#         while not is_index(num_i, j) and num is not None: 
+#             temp = array[num_i]
+#             array[num_i] = num
+#             j = num_i
+#             num = temp
+#         i += 1
+
+#     print array
+#     for i in range(len(array)):
+#         if (array[i] - lowest) != i:
+#             return (i + lowest)
+
+#     return None
+
+
+# def is_index(num1, num2):
+#     if num1 == num2:
+#         return True
+#     else:
+#         return False
+
+# print "finding missing positive"
+# print find_pos([-4, 5,1,3,4])
+
+##########################################################################
+scale = {"I": ["I", "X", "C", "M"], "V": ["V", "L", "D"]}
+look_up = {0: "", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX"}
+
+
+def roman_num(num):
+    # converts digit to roman numeral
+    result = ""
     i = 0
-    length = len(array)
-    while i < length:
-        if array[i] < 1:
-            array = array[:i] + array[i+1:]
-            length = len(array)
+    num = str(num)
+    for n in range(len(num)-1, -1, -1):
+        curr = num[n]
+        curr = look_up[int(curr)]
+        for m in range(len(curr)-1, -1, -1):
+            each = curr[m]
+            if each == "X":
+                each = scale["I"][i+1]
+                result = each + result
+            elif each == "I":
+                each = scale["I"][i]
+                result = each + result
+            elif each == "V":
+                each = scale["V"][i]
+                result = each + result
         i += 1
 
-    lowest = min(array)
-    highest = max(array)
-    true_len = highest - lowest + 1
-    difference = true_len - len(array)
+    return result
 
-    for each in range(difference):
-        array.append(None)
-
-    # touches each number ONCE to place them in the corresponding index location
-    i = 0
-    while i < true_len:
-        j = i
-        num = array[j]
-        num_i = array[j]-lowest
-        while not is_index(num_i, j) and num is not None:  # (Is this O(n)?)
-            temp = array[num_i]
-            array[num_i] = num
-            j = num_i
-            num = temp
-        i += 1
-
-    print array
-    for i in range(len(array)):
-        if (array[i] - lowest) != i:
-            return (i + lowest)
-
-    return None
+print roman_num(4)
+print roman_num(8)
+print roman_num(9)
+print roman_num(19)
+print roman_num(49)
+print roman_num(410)
+print roman_num(394)
+print roman_num(3999)
 
 
-def is_index(num1, num2):
-    if num1 == num2:
-        return True
-    else:
-        return False
 
-print "finding missing positive"
-print find_pos([-4, 5,1,3,4])
+
+
+

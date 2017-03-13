@@ -357,44 +357,355 @@
 # print find_pos([-4, 5,1,3,4])
 
 ##########################################################################
-scale = {"I": ["I", "X", "C", "M"], "V": ["V", "L", "D"]}
-look_up = {0: "", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX"}
+# scale = {"I": ["I", "X", "C", "M"], "V": ["V", "L", "D"]}
+# look_up = {0: "", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX"}
 
 
-def roman_num(num):
-    # converts digit to roman numeral
-    result = ""
-    i = 0
-    num = str(num)
-    for n in range(len(num)-1, -1, -1):
-        curr = num[n]
-        curr = look_up[int(curr)]
-        for m in range(len(curr)-1, -1, -1):
-            each = curr[m]
-            if each == "X":
-                each = scale["I"][i+1]
-                result = each + result
-            elif each == "I":
-                each = scale["I"][i]
-                result = each + result
-            elif each == "V":
-                each = scale["V"][i]
-                result = each + result
-        i += 1
+# def roman_num(num):
+#     # converts digit to roman numeral
+#     result = ""
+#     i = 0
+#     num = str(num)
+#     for n in range(len(num)-1, -1, -1):
+#         curr = num[n]
+#         curr = look_up[int(curr)]
+#         for m in range(len(curr)-1, -1, -1):
+#             each = curr[m]
+#             if each == "X":
+#                 each = scale["I"][i+1]
+#             elif each == "I":
+#                 each = scale["I"][i]
+#             elif each == "V":
+#                 each = scale["V"][i]
+#             result = each + result
+#         i += 1
 
-    return result
-
-print roman_num(4)
-print roman_num(8)
-print roman_num(9)
-print roman_num(19)
-print roman_num(49)
-print roman_num(410)
-print roman_num(394)
-print roman_num(3999)
+#     return result
 
 
+# vals = [1, 5, 10, 50, 100, 500, 1000]
+# roms = ["I", "V", "X", "L", "C", "D", "M"]
+
+# def roman_num(num):
+#     result = ""
+
+#     for i in range (len(vals)-1,-1,-1):
+#         while vals[i]<=num:
+#             num -= vals[i]
+#             result = result + roms[i]
+#     for i in range (len(roms)-2,-1,-1):
+#         old_t = roms[i]+roms[i]+roms[i]+roms[i]
+#         new_t = roms[i]+roms[i+1]
+#         result = result.replace(old_t, new_t)
+#     for i in range (len(roms)-3,-1,-1):
+#         old_t = roms[i+1]+roms[i]+roms[i+1]
+#         new_t = roms[i]+roms[i+2]
+#         result = result.replace(old_t, new_t)
+#     return result
 
 
 
+# print roman_num(4)
+# print roman_num(8)
+# print roman_num(9)
+# print roman_num(19)
+# print roman_num(49)
+# print roman_num(410)
+# print roman_num(90)
+# print roman_num(900)
+# print roman_num(394)
+# print roman_num(3999)
 
+###########
+# def is_happy(n):
+#     visited = set()
+#     visited.add(n)
+#     while n != 1:
+#         curr = 0
+#         for num in str(n):
+#             curr += int(num) * int(num)
+#         if curr in visited:
+#             return False
+#         else:
+#             visited.add(curr)
+#             n = curr
+            
+#     return True
+
+# print is_happy(7)
+# print is_happy(25)
+
+###############################################################################
+# def isUgly(num):
+#     while True:
+#         if num == 1:
+#             return True
+#         elif num % 2 == 0:
+#             num = num / 2
+#         elif num % 3 == 0:
+#             num = num / 3
+#         elif num % 5 == 0:
+#             num = num / 5
+#         else:
+#             return False
+
+#     # uglies = [2, 3, 5]
+#     #     i = 0
+#     #     while i < len(uglies):
+#     #         while num % uglies[i] == 0:
+#     #             num = num / uglies[i] 
+#     #         i += 1 
+#     #     if num == 1:
+#     #         return True
+            
+#     #     return False
+
+# print isUgly(25)
+# pr
+# print isUgly(66)
+
+###############################################################################
+# uggos = {1:2}
+# def nthUgly(n):
+#     i = 0
+#     curr = 1
+#     while i < n:
+#         print uggos[1]
+#         if ((i+1) == n) and is_ugly(curr):
+#             return curr
+#         elif is_ugly(curr):
+#             i += 1
+#             curr += 1
+#         else:
+#             curr += 1
+
+
+# def is_ugly(num):
+#     uglies = [2, 3, 5]
+#     uggs = len(uglies)
+#     i = 0
+#     while i < uggs:
+#         while num % uglies[i] == 0:
+#             num /= uglies[i]
+#         i += 1
+#     if num == 1:
+#         return True
+#     return False
+
+# print nthUgly(10)
+# print nthUgly(9)
+# print nthUgly(11)
+# print nthUgly(231)
+###############################################################################
+# def pascal_triangle2(n):
+#     result = [[0,1,0]]
+#     i = 0
+
+#     while i < n-1:
+#         curr = result[i]
+#         new = [0]
+#         for pos in range(len(curr)-1):
+#             new.append(curr[pos] + curr[pos + 1])
+#         new.append(0)
+#         result.append(new)
+#         i += 1
+
+#     for i in range(len(result)):
+#         result[i] = result[i][1:-1]
+
+
+#     return result
+
+# #######
+# def pascal_triangle(n):
+#     result = []
+
+#     for i in range(n):
+#         if i == 0:
+#             curr = []
+#         else:
+#             curr = result[i-1][:]
+#         curr.append(0)
+#         new = [1]
+#         for pos in range(len(curr)-1):
+#             new.append(curr[pos] + curr[pos + 1])
+#         result.append(new)
+
+
+#     return result
+
+
+# print pascal_triangle(-1)
+# print pascal_triangle(0)
+# print pascal_triangle(1)
+# print pascal_triangle(2)
+# print pascal_triangle(3)
+# print pascal_triangle(4)
+# print pascal_triangle(5)
+
+##############################################################################
+
+
+
+# def countPrimes(n):
+#     numbers = [None]*(n)
+    
+#     for i in range(2, n):
+#         if numbers[i] is None:
+#             numbers[i] = isPrime(i)
+#         for m in range(i, n, i):
+#             if numbers[m] is None:
+#                 if (m) % i == 0:
+#                     numbers[m] = False
+                    
+#     numbers = numbers[2:]
+#     result = []
+#     for i in range(len(numbers)):
+#         if numbers[i] is True:
+#             result.append(i+2)
+#     print result
+#     return sum(numbers)
+        
+# def isPrime(i):
+#     if i <= 1:
+#         return False
+#     if i == 2 or i == 3:
+#         return True
+#     for num in range(2, i/2):
+#         if i % num == 0:
+#             return False
+#     return True
+
+
+# print countPrimes(5)
+# print countPrimes(23)
+# print countPrimes(200)
+# print countPrimes(40000)
+
+##############################################################################
+# total Hamming distance
+
+
+# def total_Ham(arr):
+#     bits = {}
+
+#     def get_bits(num):
+#         result = ''
+#         num2 = num
+#         for i in range(30):
+#             if num in bits:
+#                 extra = len(result)
+#                 result = bits[num] + result
+#                 result = result[extra:]
+#                 break
+#             else:
+#                 r = num % 2
+#                 num /= 2
+#                 result = str(r) + result
+
+#         bits[num2] = result
+#         return result
+
+#     def get_diff(numA, numB):
+#         count = 0
+#         for i in range(30):
+#             if numA[i] != numB[i]:
+#                 count += 1
+#         return count
+
+#     for i in arr:
+#         if i not in bits:
+#             print i
+#             bits[i] = get_bits(i)
+
+#     result = 0
+#     print bits
+
+#     # fix this O(n^2) loops so that we are looking at each bit individually. 
+#     # remember the if we have four 0's and 2 1's, whats the Hamming distance
+#     for l in range(len(arr)):
+#         for m in range(l, len(arr)):
+#             if l != m:
+#                 result += get_diff(bits[arr[l]], bits[arr[m]])
+#     return result
+
+# print total_Ham([6,1,8,6,8])
+##############################################################################
+# is leap year
+# is divisible by 4. if divisible by 100, not leap year unless also divisible by 400
+
+# def is_leap1(year):
+#     leap = False
+#     if year % 4 == 0:
+#         leap = True
+#     if year % 100 == 0:
+#         leap = False
+#     if year % 400 == 0:
+#         leap = True
+#     return leap
+
+# def is_leap(year):
+#     return ((year%4==0 and year%100!=0) or (year%400==0))
+
+# print is_leap(1995)
+# print is_leap(2000)
+# print is_leap(1900)
+# print is_leap(2004)
+# print is_leap(2016)
+# print is_leap(1600)
+# print is_leap(2008)
+# print is_leap(1996)
+##############################################################################
+# find single non-Duplicate in array
+
+# def singleNonDuplicate1(arr):
+#     length = len(arr)
+#     mid = length/2
+#     if length == 1:
+#         return arr[0]
+
+#     while True:
+#         length = len(arr)
+#         mid = length/2
+#         if arr[mid-1] == arr[mid]:
+#             if mid == 1:
+#                 return arr[mid+1]
+#             else:
+#                 arr = arr[:mid-1]
+#         elif arr[mid] == arr[mid+1]:
+#             if mid == 1:
+#                 return arr[mid-1]
+#             else:
+#                 arr = arr[mid+2:]
+#         else:
+#             return arr[mid]
+
+
+# def singleNonDuplicate(arr):
+#     l = 0
+#     r = len(arr)-1
+
+#     while True:
+#         m = (r+l)/2
+#         if l == m:
+#             return arr[m]
+
+#         if r-l == 2:
+#             if arr[m-1] == arr[m]:
+#                 return arr[m+1]
+#             elif arr[m] == arr[m+1]:
+#                 return arr[m-1]
+
+#         if arr[m-1] == arr[m]:
+#             r = m-2
+#         elif arr[m] == arr[m+1]:
+#             l = m+2
+#         else:
+#             return arr[m]
+
+
+
+# print singleNonDuplicate([1,1,2,2,3,3,4,5,5])
+# print singleNonDuplicate([1,1,2,3,3,4,4,5,5])
+# print singleNonDuplicate([1,1,2,3,3,5,5,6,6,7,7,8,8])
+##############################################################################

@@ -709,3 +709,75 @@
 # print singleNonDuplicate([1,1,2,3,3,4,4,5,5])
 # print singleNonDuplicate([1,1,2,3,3,5,5,6,6,7,7,8,8])
 ##############################################################################
+# making a trie class for quick reference
+
+# class Trie(object):
+#     '''makes a trie'''
+#     def __init__(self):
+#         self.trie = {"": {}}
+
+#     def insert_word(self, word):
+#         '''inserts one word into an existing trie'''
+#         current_dict = self.trie[""]
+#         for letter in word:
+#             current_dict = current_dict.setdefault(letter, {})
+#         current_dict['$'] = '$'
+
+#     def insert_words(self, *words):
+#         '''inserts an array of strings into an existing trie'''
+#         for word in words:
+#             self.insert_word(word)
+
+#     def show_trie(self, prefix=None):
+#         '''returns all the words as an array in an existing trie'''
+#         all_words = []
+
+#         def get_words(curr_dict, curr_word):
+#             if curr_dict[curr_word[-1]] == '$':
+#                 all_words.append(curr_word[:-1])
+#                 return None
+#             for next_val in curr_dict[curr_word[-1]]:
+#                 get_words(curr_dict[curr_word[-1]], curr_word+next_val)
+#         if prefix is None:
+#             curr_dict = self.trie['']
+#         else:
+#             curr_dict = prefix    
+#         for letter in curr_dict:
+#             get_words(curr_dict, letter)
+
+#         return all_words
+
+#     def is_in_trie(self, word):
+#         '''checks if a word is in the existing trie'''
+#         current_dict = self.trie['']
+#         for letter in word:
+#             if letter in current_dict:
+#                 current_dict = current_dict[letter]
+#             else:
+#                 return False
+#         return True
+
+#     def get_words(self, prefix):
+#         '''given a prefix, returns all the words with that prefix'''
+#         curr_dict = self.trie['']
+#         for letter in prefix:
+#             curr_dict = curr_dict[letter]
+#         words = self.show_trie(curr_dict)
+#         for i in range(len(words)):
+#             words[i] = prefix + words[i]
+#         return words
+
+# trie = Trie()
+# trie.insert_words("foo", "bar", "bars", "fooz")
+# print trie.show_trie()
+# trie.insert_words("fool", "bear")
+# print trie.show_trie()
+# print trie.is_in_trie("foo")
+# print trie.is_in_trie("fools")
+# print trie.get_words('fo')
+##############################################################################
+
+
+
+        
+        

@@ -776,6 +776,23 @@
 # print trie.is_in_trie("fools")
 # print trie.get_words('fo')
 ##############################################################################
+# give a nested array of [height, queue], arrange the pairs so that they are in 
+# correct order. The queue number notes how many in front of it is larger or same value
+# Input:  [[7,0], [7,1], [6,1], [5,0], [5,2], [4,4]]  
+# Output: [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
+
+def get_order(arr):
+    arr = sorted(arr, key=lambda x:x[1], reverse=False)
+    arr = sorted(arr, key=lambda x:x[0], reverse=True)
+    result = []
+    for i in arr:
+        result.insert(i[1], i)
+    return result
+    
+
+print get_order([[7,1], [7,0], [6,1], [5,2], [5,0], [4,4]])
+print get_order([[7,2], [7,0], [6,1], [5,2], [5,0], [4,4], [8,0]])
+
 
 
 
